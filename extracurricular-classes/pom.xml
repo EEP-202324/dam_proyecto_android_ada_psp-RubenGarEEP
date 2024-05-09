@@ -11,8 +11,8 @@
 	<groupId>com.university</groupId>
 	<artifactId>extracurricular-classes</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name> Extracurricular Classes Registration</name>
-	<description>Application to manage university extracurricular sports classes</description>
+	<name>Extracurricular Classes Registration</name>
+	<description>Aplicacion para manejar las clases deportivas en la universidad</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
