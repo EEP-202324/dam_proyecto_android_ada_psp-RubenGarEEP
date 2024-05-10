@@ -12,21 +12,21 @@ public class ExtracurricularClassesRegistration {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private Long Id;
 	private String nombre;
     private int edad; 
     private String deporte;
-	public ExtracurricularClassesRegistration(int id, String nombre, int edad, String deporte) {
+	public ExtracurricularClassesRegistration(Long id, String nombre, int edad, String deporte) {
 		super();
 		Id = id;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.deporte = deporte;
 	}
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 	public String getNombre() {
