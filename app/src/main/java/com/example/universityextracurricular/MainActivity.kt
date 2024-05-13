@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.universityextracurricular.model.RegistrationScreen
 import com.example.universityextracurricular.ui.theme.UniversityextracurricularTheme
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
