@@ -3,11 +3,17 @@ package com.example.universityextracurricular
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.universityextracurricular.ui.theme.UniversityextracurricularTheme
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : ComponentActivity() {
     private val apiService: ApiService by lazy {
@@ -49,4 +55,3 @@ fun MainScreen(navController: androidx.navigation.NavHostController) {
         }
     }
 }
-
