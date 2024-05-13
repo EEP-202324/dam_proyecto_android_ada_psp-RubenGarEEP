@@ -18,6 +18,7 @@ class MainActivity : ComponentActivity() {
 
     private val retrofit = Retrofit.Builder()
         .baseUrl("http://localhost:8082/api/") // Ajusta esta URL si es necesario
+        .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     private val apiService = retrofit.create(APIService::class.java)
