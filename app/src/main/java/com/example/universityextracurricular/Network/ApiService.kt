@@ -1,34 +1,14 @@
-package com.example.universityextracurricular.network
+package com.example.universityextracurricular
 
-import com.example.universityextracurricular.model.ExtracurricularClassesRegistration
 import com.example.universityextracurricular.model.Deporte
+import com.example.universityextracurricular.model.ExtracurricularClassesRegistration
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-
-    @GET("registrations")
-    fun getRegistrations(
-        @Query("page") page: Int,
-        @Query("size") size: Int,
-        @Query("sort") sort: String
-    ): Call<List<ExtracurricularClassesRegistration>>
-
-    @POST("registrations")
-    fun createRegistration(@Body registration: ExtracurricularClassesRegistration): Call<ExtracurricularClassesRegistration>
-
-    @GET("registrations/{id}")
-    fun getRegistrationById(@Path("id") id: Long): Call<ExtracurricularClassesRegistration>
-
-    @PUT("registrations/{id}")
-    fun updateRegistration(
-        @Path("id") id: Long,
-        @Body registration: ExtracurricularClassesRegistration
-    ): Call<ExtracurricularClassesRegistration>
-
-    @DELETE("registrations/{id}")
-    fun deleteRegistration(@Path("id") id: Long): Call<Void>
-
-    @GET("default-values/deportes")
+    @GET("api/deportes")
     fun getDeportes(): Call<List<Deporte>>
+
+    @POST("api/registrations")
+    fun createRegistration(@Body registration: ExtracurricularClassesRegistration): Call<ExtracurricularClassesRegistration>
 }
