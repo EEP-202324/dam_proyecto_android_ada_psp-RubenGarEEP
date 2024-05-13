@@ -1,82 +1,93 @@
-import android.widget.Toast
+package com.example.universityextracurricular.ui
+
+import ExtracurricularClassesRegistration
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.universityextracurricular.ApiService
+import com.example.universityextracurricular.model.Deporte
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @Composable
-fun RegistrationScreen(
-    onSubmit: (String, Int, String) -> Unit
-) {
+fun RegistrationScreen(apiService: ApiService) {
     var nombre by remember { mutableStateOf("") }
     var edad by remember { mutableStateOf("") }
     var deporteNombre by remember { mutableStateOf("") }
-    val context = LocalContext.current
+    var registroResultado by remember { mutableStateOf("") }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = "Registro de Clase Extracurricular",
-            style = MaterialTheme.typography.titleLarge
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        OutlinedTextField(
+    Column(modifier = Modifier.padding(16.dp)) {
+        TextField(
             value = nombre,
             onValueChange = { nombre = it },
             label = { Text("Nombre") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         )
-
-        OutlinedTextField(
+        TextField(
             value = edad,
             onValueChange = { edad = it },
             label = { Text("Edad") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp),
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
+            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         )
-
-        OutlinedTextField(
+        TextField(
             value = deporteNombre,
             onValueChange = { deporteNombre = it },
             label = { Text("Nombre del Deporte") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
         Button(
             onClick = {
-                val edadInt = edad.toIntOrNull()
-                if (nombre.isNotEmpty() && edadInt != null && deporteNombre.isNotEmpty()) {
-                    onSubmit(nombre, edadInt, deporteNombre)
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Por favor, completa todos los campos correctamente.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                if (nombre.isNotEmpty() && edad.isNotEmpty() && deporteNombre.isNotEmpty()) {
+                    registerAlumno(apiService, nombre, edad.toInt(), deporteNombre) {
+                        registroResultado = "Registro exitoso"
+                    }
                 }
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
         ) {
-            Text("Registrar")
+            Text("Registrarse")
+        }
+        if (registroResultado.isNotEmpty()) {
+            Text(registroResultado, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
         }
     }
+}
+
+fun registerAlumno(apiService: ApiService, nombre: String, edad: Int, deporteNombre: String, onSuccess: () -> Unit) {
+    apiService.getDeportes().enqueue(object : Callback<List<Deporte>> {
+        override fun onResponse(call: Call<List<Deporte>>, response: Response<List<Deporte>>) {
+            if (response.isSuccessful) {
+                val deportes = response.body() ?: emptyList()
+                val deporte = deportes.find { it.nombre.equals(deporteNombre, ignoreCase = true) }
+                if (deporte != null) {
+                    val registro = ExtracurricularClassesRegistration(
+                        nombre = nombre,
+                        edad = edad,
+                        deporte = deporte
+                    )
+                    apiService.createRegistration(registro).enqueue(object : Callback<ExtracurricularClassesRegistration> {
+                        override fun onResponse(
+                            call: Call<ExtracurricularClassesRegistration>,
+                            response: Response<ExtracurricularClassesRegistration>
+                        ) {
+                            if (response.isSuccessful) {
+                                onSuccess()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ExtracurricularClassesRegistration>, t: Throwable) {
+                            // Handle failure
+                        }
+                    })
+                }
+            }
+        }
+
+        override fun onFailure(call: Call<List<Deporte>>, t: Throwable) {
+            // Handle failure
+        }
+    })
 }

@@ -3,18 +3,15 @@ package com.example.universityextracurricular
 import ExtracurricularClassesRegistration
 import com.example.universityextracurricular.model.Deporte
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface ApiService {
-    @GET("deportes")
+
+    @GET("default-values/deportes")
     fun getDeportes(): Call<List<Deporte>>
 
-    @POST("api/registrations")
+    @POST("registrations")
     fun createRegistration(@Body registration: ExtracurricularClassesRegistration): Call<ExtracurricularClassesRegistration>
-
-    companion object {
-        fun create(): Any {
-            TODO("Not yet implemented")
-        }
-    }
 }
