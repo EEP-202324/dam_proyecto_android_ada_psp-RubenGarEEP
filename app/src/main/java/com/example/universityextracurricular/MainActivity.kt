@@ -48,9 +48,17 @@ fun RegistrationScreen() {
     }
 
     if (isLoading) {
-        CircularProgressIndicator(modifier = Modifier.fillMaxSize().wrapContentSize())
+        CircularProgressIndicator(
+            modifier = Modifier
+                .fillMaxSize()
+                .wrapContentSize()
+        )
     } else if (errorMessage.isNotEmpty()) {
-        Text(text = errorMessage, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(16.dp))
+        Text(
+            text = errorMessage,
+            color = MaterialTheme.colorScheme.error,
+            modifier = Modifier.padding(16.dp)
+        )
     } else {
         LazyColumn(
             modifier = Modifier
@@ -78,23 +86,25 @@ fun RegistrationItem(registration: ExtracurricularClassesRegistration) {
     }
 }
 
-fun loadRegistrations(onSuccess: (List<ExtracurricularClassesRegistration>) -> Unit, onError: (String) -> Unit) {
-    RetrofitClient.apiService.getRegistrations(page = 0, size = 10, sort = "id,asc").enqueue(object :
-        Callback<List<ExtracurricularClassesRegistration>> {
-        override fun onResponse(
-            call: Call<List<ExtracurricularClassesRegistration>>,
-            response: Response<List<ExtracurricularClassesRegistration>>
-        ) {
-            if (response.isSuccessful) {
-                response.body()?.let { onSuccess(it) }
-            } else {
-                onError("Error: ${response.message()}")
+fun loadRegistrations(
+    onSuccess: (List<ExtracurricularClassesRegistration>) -> Unit,
+    onError: (String) -> Unit
+) {
+    RetrofitClient.apiService.getRegistrations(page = 0, size = 10, sort = "id,asc")
+        .enqueue(object : Callback<List<ExtracurricularClassesRegistration>> {
+            override fun onResponse(
+                call: Call<List<ExtracurricularClassesRegistration>>,
+                response: Response<List<ExtracurricularClassesRegistration>>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let { onSuccess(it) }
+                } else {
+                    onError("Error: ${response.message()}")
+                }
             }
-        }
 
-        override fun onFailure(call: Call<List<ExtracurricularClassesRegistration>>, t: Throwable) {
-            onError("Failure: ${t.message}")
-        }
-    })
-}
+            override fun onFailure(call: Call<List<ExtracurricularClassesRegistration>>, t: Throwable) {
+                onError("Failure: ${t.message}")
+            }
+        })
 }

@@ -66,5 +66,6 @@ fun UniversityextracurricularTheme(
         colorScheme = colorScheme,
         typography = Typography,
         content = content
+
     )
 }
