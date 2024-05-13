@@ -1,8 +1,12 @@
-package com.example.universityextracurricular.model
+import com.example.universityextracurricular.model.Deporte
 
 data class ExtracurricularClassesRegistration(
-    val id: Long,
     val nombre: String,
     val edad: Int,
     val deporte: Deporte
+)
+
+data class Deporte(
+     val id: Long?,
+    val nombre: String
 )
