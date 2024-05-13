@@ -79,9 +79,9 @@ fun RegistrationItem(registration: ExtracurricularClassesRegistration) {
             .fillMaxWidth()
             .padding(vertical = 8.dp)
     ) {
-        Text(text = "Nombre: ${registration.nombre}", style = MaterialTheme.typography.body1)
-        Text(text = "Edad: ${registration.edad}", style = MaterialTheme.typography.body2)
-        Text(text = "Deporte: ${registration.deporte.nombre}", style = MaterialTheme.typography.body2)
+        Text(text = "Nombre: ${registration.nombre}", style = MaterialTheme.typography.bodyLarge)
+        Text(text = "Edad: ${registration.edad}", style = MaterialTheme.typography.bodySmall)
+        Text(text = "Deporte: ${registration.deporte.nombre}", style = MaterialTheme.typography.bodySmall)
         Divider(modifier = Modifier.padding(vertical = 8.dp))
     }
 }
