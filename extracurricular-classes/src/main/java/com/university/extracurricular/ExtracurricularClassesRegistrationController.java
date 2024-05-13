@@ -1,10 +1,14 @@
 package com.university.extracurricular;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 import java.util.Optional;
 
 @RestController
@@ -14,10 +18,22 @@ public class ExtracurricularClassesRegistrationController {
     @Autowired
     private ExtracurricularClassesRegistrationRepository repository;
 
-    // GET: Recuperar todos los registros
+    // GET: Recuperar todos los registros con paginación, ordenación y filtrado
     @GetMapping
-    public List<ExtracurricularClassesRegistration> getAllRegistrations() {
-        return repository.findAll();
+    public Page<ExtracurricularClassesRegistration> getRegistrations(
+            @RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String deporte,
+            @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        
+        if (nombre != null && deporte != null) {
+            return repository.findByNombreContainingAndDeporteNombreContaining(nombre, deporte, pageable);
+        } else if (nombre != null) {
+            return repository.findByNombreContaining(nombre, pageable);
+        } else if (deporte != null) {
+            return repository.findByDeporteNombreContaining(deporte, pageable);
+        } else {
+            return repository.findAll(pageable);
+        }
     }
 
     // POST: Crear un nuevo registro
@@ -39,7 +55,8 @@ public class ExtracurricularClassesRegistrationController {
 
     // PUT: Actualizar un registro existente
     @PutMapping("/{id}")
-    public ResponseEntity<ExtracurricularClassesRegistration> updateRegistration(@PathVariable Long id, @RequestBody ExtracurricularClassesRegistration registrationDetails) {
+    public ResponseEntity<ExtracurricularClassesRegistration> updateRegistration(
+            @PathVariable Long id, @RequestBody ExtracurricularClassesRegistration registrationDetails) {
         Optional<ExtracurricularClassesRegistration> optionalRegistration = repository.findById(id);
         if (optionalRegistration.isPresent()) {
             ExtracurricularClassesRegistration registration = optionalRegistration.get();
@@ -65,3 +82,4 @@ public class ExtracurricularClassesRegistrationController {
         }
     }
 }
+
