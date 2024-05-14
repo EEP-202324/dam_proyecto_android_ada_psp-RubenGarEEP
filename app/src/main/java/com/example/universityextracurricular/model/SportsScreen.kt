@@ -1,5 +1,6 @@
 package com.example.universityextracurricular.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -43,6 +44,7 @@ fun SportsScreen(apiService: ApiService) {
         if (errorMessage.isNotEmpty()) {
             Text(errorMessage, color = MaterialTheme.colorScheme.error)
         } else {
+            Log.i("Eventos", "${deportes}")
             LazyColumn {
                 items(deportes) { deporte ->
                     Text(

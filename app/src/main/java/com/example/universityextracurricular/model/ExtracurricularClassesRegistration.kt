@@ -7,6 +7,6 @@ data class ExtracurricularClassesRegistration(
 )
 
 data class Deporte(
-     val id: Long?,
+     val id: Long? = null,
     val nombre: String
 )

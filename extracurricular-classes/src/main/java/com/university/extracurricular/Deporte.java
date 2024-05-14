@@ -8,8 +8,10 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
-@Table(name = "deporte")  // Asegúrate de que este nombre coincide con el de la tabla en la base de datos
+@Table(name = "deportes")  // Asegúrate de que este nombre coincide con el de la tabla en la base de datos
 public class Deporte {
 
     @Id
@@ -18,6 +20,7 @@ public class Deporte {
     private String nombre;
 
     @OneToMany(mappedBy = "deporte")
+    @JsonManagedReference
     private List<ExtracurricularClassesRegistration> registrations;
 
     // Constructor por defecto

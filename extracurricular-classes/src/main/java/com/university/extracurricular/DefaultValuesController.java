@@ -14,7 +14,6 @@ public class DefaultValuesController {
     @Autowired
     private DeporteRepository deporteRepository;
 
-    // GET: Recuperar valores predeterminados de deportes desde la base de datos
     @GetMapping("/deportes")
     public List<Deporte> getDeportes() {
         return deporteRepository.findAll();

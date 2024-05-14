@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Deporte(
     @SerializedName("id")
-    val id: Long,
+    val id: Long? = null,
     @SerializedName("nombre")
     val nombre: String
 )

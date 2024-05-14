@@ -1,5 +1,6 @@
 package com.example.universityextracurricular.ui
 
+import ExtracurricularClassesRegistration
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -8,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.universityextracurricular.ApiService
 import com.example.universityextracurricular.model.Deporte
-import com.example.universityextracurricular.model.ExtracurricularClassesRegistration
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -64,21 +64,27 @@ fun RegistrationScreen(apiService: ApiService) {
             value = nombre,
             onValueChange = { nombre = it },
             label = { Text("Nombre") },
-            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp)
         )
 
         OutlinedTextField(
             value = edad,
             onValueChange = { edad = it },
             label = { Text("Edad") },
-            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp)
         )
 
         OutlinedTextField(
             value = deporteNombre,
             onValueChange = { deporteNombre = it },
             label = { Text("Nombre del Deporte") },
-            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp)
         )
 
         Button(
@@ -97,4 +103,3 @@ fun RegistrationScreen(apiService: ApiService) {
         }
     }
 }
-
