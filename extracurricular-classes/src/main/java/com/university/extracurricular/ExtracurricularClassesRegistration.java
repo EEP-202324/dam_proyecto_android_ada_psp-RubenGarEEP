@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "registros")  // Asegúrate de que este nombre coincide con el de la tabla en la base de datos
+@Table(name = "registros")
 public class ExtracurricularClassesRegistration {
 
     @Id
@@ -19,20 +19,19 @@ public class ExtracurricularClassesRegistration {
     private int edad;
 
     @ManyToOne
-    @JoinColumn(name = "deporte_id", nullable = false)  // Asegúrate de que este nombre coincide con la columna en la tabla registros
+    @JoinColumn(name = "deporte_id", nullable = false)
     private Deporte deporte;
 
     // Constructor por defecto
     public ExtracurricularClassesRegistration() {}
 
     // Constructor con parámetros
-    public ExtracurricularClassesRegistration(Long id, String nombre, int edad, Deporte deporte) {
-        this.id = id;
+    public ExtracurricularClassesRegistration(String nombre, int edad, Deporte deporte) {
         this.nombre = nombre;
         this.edad = edad;
         this.deporte = deporte;
     }
-
+    
     // Getters y Setters
     public Long getId() {
         return id;

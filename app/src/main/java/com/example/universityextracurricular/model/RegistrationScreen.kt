@@ -1,6 +1,6 @@
 package com.example.universityextracurricular.ui
 
-import ExtracurricularClassesRegistration
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.universityextracurricular.ApiService
 import com.example.universityextracurricular.model.Deporte
+import com.example.universityextracurricular.model.ExtracurricularClassesRegistration
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,77 +18,83 @@ fun RegistrationScreen(apiService: ApiService) {
     var nombre by remember { mutableStateOf("") }
     var edad by remember { mutableStateOf("") }
     var deporteNombre by remember { mutableStateOf("") }
-    var registroResultado by remember { mutableStateOf("") }
+    var successMessage by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf("") }
+
+    fun registerAlumno() {
+        if (nombre.isNotEmpty() && edad.isNotEmpty() && deporteNombre.isNotEmpty()) {
+            val registro = ExtracurricularClassesRegistration(
+                nombre = nombre,
+                edad = edad.toInt(),
+                deporte = Deporte(id = null, nombre = deporteNombre)
+            )
+
+            apiService.createRegistration(registro).enqueue(object : Callback<ExtracurricularClassesRegistration> {
+                override fun onResponse(call: Call<ExtracurricularClassesRegistration>, response: Response<ExtracurricularClassesRegistration>) {
+                    if (response.isSuccessful) {
+                        successMessage = "Registro exitoso"
+                        errorMessage = ""
+                        Log.d("RegistrationScreen", "Registro exitoso")
+                    } else {
+                        successMessage = ""
+                        errorMessage = "Error: ${response.code()}"
+                        Log.e("RegistrationScreen", "Error: ${response.code()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<ExtracurricularClassesRegistration>, t: Throwable) {
+                    successMessage = ""
+                    errorMessage = "Error: ${t.message}"
+                    Log.e("RegistrationScreen", "Error: ${t.message}")
+                }
+            })
+        } else {
+            errorMessage = "Por favor, completa todos los campos"
+        }
+    }
 
     Column(modifier = Modifier.padding(16.dp)) {
-        TextField(
+        Text(
+            text = "Registrar Alumno",
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        OutlinedTextField(
             value = nombre,
             onValueChange = { nombre = it },
             label = { Text("Nombre") },
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
-        TextField(
+
+        OutlinedTextField(
             value = edad,
             onValueChange = { edad = it },
             label = { Text("Edad") },
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
-        TextField(
+
+        OutlinedTextField(
             value = deporteNombre,
             onValueChange = { deporteNombre = it },
             label = { Text("Nombre del Deporte") },
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
+
         Button(
-            onClick = {
-                if (nombre.isNotEmpty() && edad.isNotEmpty() && deporteNombre.isNotEmpty()) {
-                    registerAlumno(apiService, nombre, edad.toInt(), deporteNombre) {
-                        registroResultado = "Registro exitoso"
-                    }
-                }
-            },
-            modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
+            onClick = { registerAlumno() },
+            modifier = Modifier.padding(vertical = 8.dp)
         ) {
             Text("Registrarse")
         }
-        if (registroResultado.isNotEmpty()) {
-            Text(registroResultado, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+
+        if (successMessage.isNotEmpty()) {
+            Text(successMessage, color = MaterialTheme.colorScheme.primary)
+        }
+
+        if (errorMessage.isNotEmpty()) {
+            Text(errorMessage, color = MaterialTheme.colorScheme.error)
         }
     }
 }
 
-fun registerAlumno(apiService: ApiService, nombre: String, edad: Int, deporteNombre: String, onSuccess: () -> Unit) {
-    apiService.getDeportes().enqueue(object : Callback<List<Deporte>> {
-        override fun onResponse(call: Call<List<Deporte>>, response: Response<List<Deporte>>) {
-            if (response.isSuccessful) {
-                val deportes = response.body() ?: emptyList()
-                val deporte = deportes.find { it.nombre.equals(deporteNombre, ignoreCase = true) }
-                if (deporte != null) {
-                    val registro = ExtracurricularClassesRegistration(
-                        nombre = nombre,
-                        edad = edad,
-                        deporte = deporte
-                    )
-                    apiService.createRegistration(registro).enqueue(object : Callback<ExtracurricularClassesRegistration> {
-                        override fun onResponse(
-                            call: Call<ExtracurricularClassesRegistration>,
-                            response: Response<ExtracurricularClassesRegistration>
-                        ) {
-                            if (response.isSuccessful) {
-                                onSuccess()
-                            }
-                        }
-
-                        override fun onFailure(call: Call<ExtracurricularClassesRegistration>, t: Throwable) {
-                            // Handle failure
-                        }
-                    })
-                }
-            }
-        }
-
-        override fun onFailure(call: Call<List<Deporte>>, t: Throwable) {
-            // Handle failure
-        }
-    })
-}

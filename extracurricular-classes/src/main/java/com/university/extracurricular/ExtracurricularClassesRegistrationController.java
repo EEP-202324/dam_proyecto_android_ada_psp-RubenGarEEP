@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,8 +39,13 @@ public class ExtracurricularClassesRegistrationController {
 
     // POST: Crear un nuevo registro
     @PostMapping
-    public ExtracurricularClassesRegistration createRegistration(@RequestBody ExtracurricularClassesRegistration registration) {
-        return repository.save(registration);
+    public ResponseEntity<?> createRegistration(@RequestBody ExtracurricularClassesRegistration registration) {
+        try {
+            ExtracurricularClassesRegistration savedRegistration = repository.save(registration);
+            return ResponseEntity.ok(savedRegistration);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+        }
     }
 
     // GET: Recuperar un registro por ID
