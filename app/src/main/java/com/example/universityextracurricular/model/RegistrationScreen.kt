@@ -50,6 +50,29 @@ fun RegistrationScreen(apiService: ApiService) {
         }
     }
 
+    fun deleteAlumno() {
+        if (nombre.isNotEmpty() && deporteNombre.isNotEmpty()) {
+            apiService.deleteRegistrationByNameAndDeporte(nombre, deporteNombre).enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful) {
+                        successMessage = "Registro borrado"
+                        errorMessage = ""
+                    } else {
+                        successMessage = ""
+                        errorMessage = "Usuario no registrado"
+                    }
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    successMessage = ""
+                    errorMessage = "Error: ${t.message}"
+                }
+            })
+        } else {
+            errorMessage = "Por favor, completa todos los campos"
+        }
+    }
+
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
             text = "Registrar Alumno",
@@ -78,19 +101,28 @@ fun RegistrationScreen(apiService: ApiService) {
             modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
 
-        Button(
-            onClick = { registerAlumno() },
-            modifier = Modifier.padding(vertical = 8.dp)
-        ) {
-            Text("Registrarse")
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Button(
+                onClick = { registerAlumno() },
+                modifier = Modifier.weight(1f).padding(4.dp)
+            ) {
+                Text("Registrarse")
+            }
+            Button(
+                onClick = { deleteAlumno() },
+                colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.error),
+                modifier = Modifier.weight(1f).padding(4.dp)
+            ) {
+                Text("Borrar")
+            }
         }
 
         if (successMessage.isNotEmpty()) {
-            Text(successMessage, color = MaterialTheme.colorScheme.primary)
+            Text(successMessage, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 8.dp))
         }
 
         if (errorMessage.isNotEmpty()) {
-            Text(errorMessage, color = MaterialTheme.colorScheme.error)
+            Text(errorMessage, color = MaterialTheme.colorScheme.error, modifier = Modifier.padding(top = 8.dp))
         }
     }
 }

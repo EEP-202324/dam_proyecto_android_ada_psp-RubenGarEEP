@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -58,7 +58,6 @@ public class ExtracurricularClassesRegistrationController {
         ExtracurricularClassesRegistration nuevoRegistro = repository.save(registration);
         return ResponseEntity.ok(nuevoRegistro);
     }
-    
 
     // GET: Recuperar un registro por ID
     @GetMapping("/{id}")
@@ -89,15 +88,23 @@ public class ExtracurricularClassesRegistrationController {
     }
 
     // DELETE: Eliminar un registro por ID
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRegistration(@PathVariable Long id) {
-        Optional<ExtracurricularClassesRegistration> optionalRegistration = repository.findById(id);
-        if (optionalRegistration.isPresent()) {
-            repository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        } else {
+    @DeleteMapping
+    public ResponseEntity<Void> deleteRegistrationByNameAndDeporte(
+        @RequestParam String nombre,
+        @RequestParam String deporteNombre) {
+
+        List<ExtracurricularClassesRegistration> registrations = registrationRepository.findByNombreAndDeporteNombre(nombre, deporteNombre);
+
+        if (registrations.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
+
+        for (ExtracurricularClassesRegistration registration : registrations) {
+            registrationRepository.delete(registration);
+        }
+
+        return ResponseEntity.ok().build();
     }
 }
+
 

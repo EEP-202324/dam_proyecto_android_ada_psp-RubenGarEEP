@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -17,6 +18,12 @@ interface ApiService {
 
     @POST("/api/registrations")
     fun createRegistration(@Body registration: ExtracurricularClassesRegistration): Call<ExtracurricularClassesRegistration>
+
+    @DELETE("api/registrations")
+    fun deleteRegistrationByNameAndDeporte(
+        @Query("nombre") nombre: String,
+        @Query("deporteNombre") deporteNombre: String
+    ): Call<Void>
 
     @GET("/api/default-values/deporte")
     fun getDeporteByName(@Query("nombre") nombre: String): Call<Deporte>
