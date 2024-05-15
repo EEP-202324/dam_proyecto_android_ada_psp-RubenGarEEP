@@ -1,7 +1,7 @@
 package com.example.universityextracurricular.ui
 
+
 import ExtracurricularClassesRegistration
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -34,18 +34,15 @@ fun RegistrationScreen(apiService: ApiService) {
                     if (response.isSuccessful) {
                         successMessage = "Registro exitoso"
                         errorMessage = ""
-                        Log.d("RegistrationScreen", "Registro exitoso")
                     } else {
                         successMessage = ""
-                        errorMessage = "Error: ${response.code()}"
-                        Log.e("RegistrationScreen", "Error: ${response.code()}")
+                        errorMessage = "Error: ${response.code()} - ${response.message()}"
                     }
                 }
 
                 override fun onFailure(call: Call<ExtracurricularClassesRegistration>, t: Throwable) {
                     successMessage = ""
                     errorMessage = "Error: ${t.message}"
-                    Log.e("RegistrationScreen", "Error: ${t.message}")
                 }
             })
         } else {
@@ -64,27 +61,21 @@ fun RegistrationScreen(apiService: ApiService) {
             value = nombre,
             onValueChange = { nombre = it },
             label = { Text("Nombre") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 4.dp)
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
 
         OutlinedTextField(
             value = edad,
             onValueChange = { edad = it },
             label = { Text("Edad") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 4.dp)
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
 
         OutlinedTextField(
             value = deporteNombre,
             onValueChange = { deporteNombre = it },
             label = { Text("Nombre del Deporte") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 4.dp)
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
 
         Button(

@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -16,6 +17,9 @@ interface ApiService {
 
     @POST("/api/registrations")
     fun createRegistration(@Body registration: ExtracurricularClassesRegistration): Call<ExtracurricularClassesRegistration>
+
+    @GET("/api/default-values/deporte")
+    fun getDeporteByName(@Query("nombre") nombre: String): Call<Deporte>
 
     companion object {
         private const val BASE_URL = "http://10.0.2.2:8080" // URL del servidor

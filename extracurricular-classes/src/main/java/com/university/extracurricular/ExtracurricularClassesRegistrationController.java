@@ -37,16 +37,28 @@ public class ExtracurricularClassesRegistrationController {
         }
     }
 
-    // POST: Crear un nuevo registro
+    @Autowired
+    private ExtracurricularClassesRegistrationRepository registrationRepository;
+
+    @Autowired
+    private DeporteRepository deporteRepository;
+    
     @PostMapping
     public ResponseEntity<?> createRegistration(@RequestBody ExtracurricularClassesRegistration registration) {
-        try {
-            ExtracurricularClassesRegistration savedRegistration = repository.save(registration);
-            return ResponseEntity.ok(savedRegistration);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + e.getMessage());
+        // Validar el deporte
+        Deporte deporteExistente = deporteRepository.findByNombre(registration.getDeporte().getNombre());
+        if (deporteExistente == null) {
+            // Devolver un error si el deporte no existe
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El deporte no existe");
         }
+        // Ajustar el deporte existente en la entidad registration
+        registration.setDeporte(deporteExistente);
+
+        // Guardar la entidad registration
+        ExtracurricularClassesRegistration nuevoRegistro = repository.save(registration);
+        return ResponseEntity.ok(nuevoRegistro);
     }
+    
 
     // GET: Recuperar un registro por ID
     @GetMapping("/{id}")
