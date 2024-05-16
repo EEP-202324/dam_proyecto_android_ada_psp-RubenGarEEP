@@ -1,6 +1,9 @@
 package com.university.extracurricular;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +55,17 @@ public class ExtracurricularClassesRegistrationController {
                 })
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<ExtracurricularClassesRegistration>> searchRegistrations(
+            @RequestParam(required = false) String nombre,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "nombre") String sortBy,
+            @RequestParam(defaultValue = "asc") String sortDir
+    ) {
+        PageRequest pageable = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sortBy);
+        Page<ExtracurricularClassesRegistration> registrations = repository.findByNombreContainingIgnoreCase(nombre, pageable);
+        return ResponseEntity.ok(registrations);
+    }
 }
-
-

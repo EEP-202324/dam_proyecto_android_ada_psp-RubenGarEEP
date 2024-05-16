@@ -18,7 +18,7 @@ public class ExtracurricularClassesRegistration {
     private Long id;
     private String nombre;
     private int edad;
-    private String horario;
+    private String horario; // Añadir el campo horario
 
     @ManyToOne
     @JoinColumn(name = "deporte_id", nullable = false)
@@ -32,7 +32,7 @@ public class ExtracurricularClassesRegistration {
     public ExtracurricularClassesRegistration(String nombre, int edad, String horario, Deporte deporte) {
         this.nombre = nombre;
         this.edad = edad;
-        this.horario = horario;
+        this.horario = horario; // Inicializar el campo horario
         this.deporte = deporte;
     }
 

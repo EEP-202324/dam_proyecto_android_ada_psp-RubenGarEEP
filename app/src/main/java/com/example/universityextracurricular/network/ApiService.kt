@@ -25,8 +25,20 @@ interface ApiService {
         @Query("deporteNombre") deporteNombre: String
     ): Call<Void>
 
+    @GET("/api/registrations/search")
+    fun searchRegistrations(
+        @Query("nombre") nombre: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+        @Query("sortBy") sortBy: String,
+        @Query("sortDir") sortDir: String
+    ): Call<PageResponse<ExtracurricularClassesRegistration>>
+
     @GET("/api/default-values/deporte")
     fun getDeporteByName(@Query("nombre") nombre: String): Call<Deporte>
+
+
+
 
     companion object {
         private const val BASE_URL = "http://10.0.2.2:8080" // URL del servidor
@@ -40,3 +52,9 @@ interface ApiService {
         }
     }
 }
+data class PageResponse<T>(
+    val content: List<T>,
+    val totalElements: Long,
+    val totalPages: Int,
+    val number: Int
+)

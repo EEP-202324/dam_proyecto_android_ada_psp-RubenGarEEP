@@ -1,7 +1,6 @@
 package com.example.universityextracurricular.ui
 
-
-import android.util.Log
+import ExtracurricularClassesRegistration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.universityextracurricular.ApiService
+import com.example.universityextracurricular.PageResponse
 import com.example.universityextracurricular.model.Deporte
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,6 +19,8 @@ import retrofit2.Response
 fun SportsScreen(apiService: ApiService) {
     var deportes by remember { mutableStateOf(listOf<Deporte>()) }
     var errorMessage by remember { mutableStateOf("") }
+    var searchQuery by remember { mutableStateOf("") }
+    var searchResults by remember { mutableStateOf<List<ExtracurricularClassesRegistration>>(emptyList()) }
 
     LaunchedEffect(Unit) {
         apiService.getDeportes().enqueue(object : Callback<List<Deporte>> {
@@ -36,16 +38,35 @@ fun SportsScreen(apiService: ApiService) {
         })
     }
 
+    fun searchAlumnos() {
+        apiService.searchRegistrations(searchQuery, 0, 10, "nombre", "asc").enqueue(object : Callback<PageResponse<ExtracurricularClassesRegistration>> {
+            override fun onResponse(call: Call<PageResponse<ExtracurricularClassesRegistration>>, response: Response<PageResponse<ExtracurricularClassesRegistration>>) {
+                if (response.isSuccessful) {
+                    searchResults = response.body()?.content ?: emptyList()
+                    errorMessage = ""
+                } else {
+                    searchResults = emptyList()
+                    errorMessage = "Error: ${response.code()} - ${response.message()}"
+                }
+            }
+
+            override fun onFailure(call: Call<PageResponse<ExtracurricularClassesRegistration>>, t: Throwable) {
+                searchResults = emptyList()
+                errorMessage = "Error: ${t.message}"
+            }
+        })
+    }
+
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
             text = "Deportes Disponibles",
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(bottom = 16.dp)
         )
+
         if (errorMessage.isNotEmpty()) {
             Text(errorMessage, color = MaterialTheme.colorScheme.error)
         } else {
-            Log.i("Eventos", "${deportes}")
             LazyColumn {
                 items(deportes) { deporte ->
                     Text(
@@ -55,6 +76,29 @@ fun SportsScreen(apiService: ApiService) {
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                 }
             }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        OutlinedTextField(
+            value = searchQuery,
+            onValueChange = { searchQuery = it },
+            label = { Text("Buscar Alumno") },
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        )
+
+        Button(
+            onClick = { searchAlumnos() },
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        ) {
+            Text("Buscar")
+        }
+
+        searchResults.forEach { result ->
+            Text(
+                "Nombre: ${result.nombre}, Edad: ${result.edad}, Deporte: ${result.deporte.nombre}, Horario: ${result.horario}",
+                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+            )
         }
     }
 }
