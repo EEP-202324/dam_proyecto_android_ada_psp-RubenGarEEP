@@ -1,7 +1,8 @@
+
 package com.example.universityextracurricular.ui
 
-
 import ExtracurricularClassesRegistration
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -18,14 +19,19 @@ fun RegistrationScreen(apiService: ApiService) {
     var nombre by remember { mutableStateOf("") }
     var edad by remember { mutableStateOf("") }
     var deporteNombre by remember { mutableStateOf("") }
+    var horario by remember { mutableStateOf("Selecciona un horario") }
+    var expanded by remember { mutableStateOf(false) }
     var successMessage by remember { mutableStateOf("") }
     var errorMessage by remember { mutableStateOf("") }
 
+    val horarios = listOf("Lunes, Miércoles", "Martes, Jueves", "Toda la semana")
+
     fun registerAlumno() {
-        if (nombre.isNotEmpty() && edad.isNotEmpty() && deporteNombre.isNotEmpty()) {
+        if (nombre.isNotEmpty() && edad.isNotEmpty() && deporteNombre.isNotEmpty() && horario != "Selecciona un horario") {
             val registro = ExtracurricularClassesRegistration(
                 nombre = nombre,
                 edad = edad.toInt(),
+                horario = horario, // Añadir el parámetro horario
                 deporte = Deporte(id = null, nombre = deporteNombre)
             )
 
@@ -100,6 +106,33 @@ fun RegistrationScreen(apiService: ApiService) {
             label = { Text("Nombre del Deporte") },
             modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
         )
+
+        Box(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+            OutlinedTextField(
+                value = horario,
+                onValueChange = {},
+                label = { Text("Horario") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { expanded = !expanded },
+                readOnly = true
+            )
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                horarios.forEach { horarioItem ->
+                    DropdownMenuItem(
+                        text = { Text(horarioItem) },
+                        onClick = {
+                            horario = horarioItem
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
 
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Button(
