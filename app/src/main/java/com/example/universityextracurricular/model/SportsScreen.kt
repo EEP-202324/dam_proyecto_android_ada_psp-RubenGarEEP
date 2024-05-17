@@ -39,22 +39,32 @@ fun SportsScreen(apiService: ApiService) {
     }
 
     fun searchAlumnos() {
-        apiService.searchRegistrations(searchQuery, 0, 10, "nombre", "asc").enqueue(object : Callback<PageResponse<ExtracurricularClassesRegistration>> {
-            override fun onResponse(call: Call<PageResponse<ExtracurricularClassesRegistration>>, response: Response<PageResponse<ExtracurricularClassesRegistration>>) {
-                if (response.isSuccessful) {
-                    searchResults = response.body()?.content ?: emptyList()
-                    errorMessage = ""
-                } else {
-                    searchResults = emptyList()
-                    errorMessage = "Error: ${response.code()} - ${response.message()}"
+        apiService.searchRegistrations(searchQuery, 0, 10, "nombre", "asc")
+            .enqueue(object : Callback<PageResponse<ExtracurricularClassesRegistration>> {
+                override fun onResponse(
+                    call: Call<PageResponse<ExtracurricularClassesRegistration>>,
+                    response: Response<PageResponse<ExtracurricularClassesRegistration>>
+                ) {
+                    if (response.isSuccessful) {
+                        searchResults = response.body()?.content ?: emptyList()
+                        errorMessage = ""
+                        println("DEBUG: Resultados de búsqueda: $searchResults")
+                    } else {
+                        searchResults = emptyList()
+                        errorMessage = "Error: ${response.code()} - ${response.message()}"
+                        println("DEBUG: Error en la búsqueda: ${response.code()} - ${response.message()}")
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<PageResponse<ExtracurricularClassesRegistration>>, t: Throwable) {
-                searchResults = emptyList()
-                errorMessage = "Error: ${t.message}"
-            }
-        })
+                override fun onFailure(
+                    call: Call<PageResponse<ExtracurricularClassesRegistration>>,
+                    t: Throwable
+                ) {
+                    searchResults = emptyList()
+                    errorMessage = "Error: ${t.message}"
+                    println("DEBUG: Error de red en la búsqueda: ${t.message}")
+                }
+            })
     }
 
     Column(modifier = Modifier.padding(16.dp)) {
@@ -94,11 +104,21 @@ fun SportsScreen(apiService: ApiService) {
             Text("Buscar")
         }
 
-        searchResults.forEach { result ->
-            Text(
-                "Nombre: ${result.nombre}, Edad: ${result.edad}, Deporte: ${result.deporte.nombre}, Horario: ${result.horario}",
-                modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
-            )
+        LazyColumn {
+            items(searchResults) { result ->
+                if (result.deporte != null) {
+                    Text(
+                        text = "Nombre: ${result.nombre}, Edad: ${result.edad}, Deporte: ${result.deporte.nombre}, Horario: ${result.horario}",
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                    )
+                } else {
+                    Text(
+                        text = "Nombre: ${result.nombre}, Edad: ${result.edad}, Deporte: No registrado, Horario: ${result.horario}",
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                    )
+                }
+                Divider(modifier = Modifier.padding(vertical = 8.dp))
+            }
         }
     }
 }
