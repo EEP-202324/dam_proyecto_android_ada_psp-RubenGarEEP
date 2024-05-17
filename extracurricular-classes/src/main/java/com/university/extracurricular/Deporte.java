@@ -3,6 +3,8 @@ package com.university.extracurricular;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "deportes")
 public class Deporte {
@@ -13,6 +15,7 @@ public class Deporte {
     private String nombre;
 
     @OneToMany(mappedBy = "deporte", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<ExtracurricularClassesRegistration> registrations;
 
     // Constructor por defecto

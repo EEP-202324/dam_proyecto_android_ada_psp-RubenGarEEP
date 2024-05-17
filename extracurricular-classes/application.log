@@ -475,3 +475,202 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2024-05-17T17:41:21.177+02:00  INFO 1224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2024-05-17T17:41:21.181+02:00  INFO 1224 --- [restartedMain] curricularClassesRegistrationApplication : Started ExtracurricularClassesRegistrationApplication in 0.92 seconds (process running for 1266.626)
 2024-05-17T17:41:21.182+02:00  INFO 1224 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-05-17T17:43:31.555+02:00  INFO 26168 --- [restartedMain] curricularClassesRegistrationApplication : Starting ExtracurricularClassesRegistrationApplication using Java 19.0.1 with PID 26168 (C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes\target\classes started by Ruben in C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes)
+2024-05-17T17:43:31.557+02:00 DEBUG 26168 --- [restartedMain] curricularClassesRegistrationApplication : Running with Spring Boot v3.1.11, Spring v6.0.19
+2024-05-17T17:43:31.558+02:00  INFO 26168 --- [restartedMain] curricularClassesRegistrationApplication : No active profile set, falling back to 1 default profile: "default"
+2024-05-17T17:43:31.672+02:00  INFO 26168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-17T17:43:31.672+02:00  INFO 26168 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-17T17:43:32.960+02:00  INFO 26168 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-17T17:43:33.077+02:00  INFO 26168 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 2 JPA repository interfaces.
+2024-05-17T17:43:34.451+02:00  INFO 26168 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-05-17T17:43:34.502+02:00  INFO 26168 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-17T17:43:34.502+02:00  INFO 26168 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-17T17:43:34.709+02:00  INFO 26168 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-17T17:43:34.709+02:00  INFO 26168 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3037 ms
+2024-05-17T17:43:35.111+02:00  INFO 26168 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-17T17:43:35.228+02:00  INFO 26168 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.24.Final
+2024-05-17T17:43:35.231+02:00  INFO 26168 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-05-17T17:43:35.623+02:00  INFO 26168 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-17T17:43:35.664+02:00  INFO 26168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-17T17:43:36.274+02:00  INFO 26168 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@82de8f9
+2024-05-17T17:43:36.280+02:00  INFO 26168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-17T17:43:37.974+02:00  INFO 26168 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-17T17:43:38.098+02:00  INFO 26168 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-17T17:43:38.625+02:00  WARN 26168 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-17T17:43:38.768+02:00 DEBUG 26168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-17T17:43:38.889+02:00 DEBUG 26168 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 9 mappings in 'requestMappingHandlerMapping'
+2024-05-17T17:43:39.420+02:00 DEBUG 26168 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-05-17T17:43:39.429+02:00 DEBUG 26168 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-17T17:43:39.530+02:00  WARN 26168 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-05-17T17:43:39.548+02:00  WARN 26168 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-05-17T17:43:39.550+02:00  INFO 26168 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-17T17:43:39.556+02:00  INFO 26168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-17T17:43:39.567+02:00  INFO 26168 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-17T17:43:39.572+02:00  INFO 26168 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-17T17:43:39.587+02:00  INFO 26168 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-05-17T17:43:39.611+02:00 ERROR 26168 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-05-17T17:43:50.895+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : Starting ExtracurricularClassesRegistrationApplication using Java 19.0.1 with PID 6544 (C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes\target\classes started by Ruben in C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes)
+2024-05-17T17:43:50.900+02:00 DEBUG 6544 --- [restartedMain] curricularClassesRegistrationApplication : Running with Spring Boot v3.1.11, Spring v6.0.19
+2024-05-17T17:43:50.902+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : No active profile set, falling back to 1 default profile: "default"
+2024-05-17T17:43:50.999+02:00  INFO 6544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-17T17:43:51.000+02:00  INFO 6544 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-17T17:43:52.016+02:00  INFO 6544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-17T17:43:52.099+02:00  INFO 6544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 2 JPA repository interfaces.
+2024-05-17T17:43:53.476+02:00  INFO 6544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-05-17T17:43:53.498+02:00  INFO 6544 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-17T17:43:53.499+02:00  INFO 6544 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-17T17:43:53.643+02:00  INFO 6544 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-17T17:43:53.644+02:00  INFO 6544 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2643 ms
+2024-05-17T17:43:53.930+02:00  INFO 6544 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-17T17:43:54.035+02:00  INFO 6544 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.24.Final
+2024-05-17T17:43:54.042+02:00  INFO 6544 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-05-17T17:43:54.456+02:00  INFO 6544 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-17T17:43:54.496+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-17T17:43:55.120+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9201941
+2024-05-17T17:43:55.124+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-17T17:43:56.637+02:00  INFO 6544 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-17T17:43:56.807+02:00  INFO 6544 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-17T17:43:57.336+02:00  WARN 6544 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-17T17:43:57.556+02:00 DEBUG 6544 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-17T17:43:57.775+02:00 DEBUG 6544 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 9 mappings in 'requestMappingHandlerMapping'
+2024-05-17T17:43:58.393+02:00 DEBUG 6544 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-05-17T17:43:58.406+02:00 DEBUG 6544 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-17T17:43:58.514+02:00  INFO 6544 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-17T17:43:58.577+02:00  INFO 6544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-05-17T17:43:58.591+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : Started ExtracurricularClassesRegistrationApplication in 8.251 seconds (process running for 8.903)
+2024-05-17T17:44:49.067+02:00  INFO 6544 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-17T17:44:49.077+02:00  INFO 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-17T17:44:49.079+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-17T17:44:49.080+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-17T17:44:49.080+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-17T17:44:49.095+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4d3a7fbf
+2024-05-17T17:44:49.096+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@1b9460c2
+2024-05-17T17:44:49.097+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-17T17:44:49.098+02:00  INFO 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2024-05-17T17:44:49.127+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/default-values/deportes", parameters={}
+2024-05-17T17:44:49.163+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.university.extracurricular.DefaultValuesController#getDeportes()
+2024-05-17T17:44:50.128+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-17T17:44:50.135+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [[com.university.extracurricular.Deporte@4afe3745, com.university.extracurricular.Deporte@301846b9, c (truncated)...]
+2024-05-17T17:44:50.452+02:00  WARN 6544 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)
+2024-05-17T17:44:50.453+02:00  WARN 6544 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)]
+2024-05-17T17:44:50.457+02:00 DEBUG 6544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-17T17:45:00.917+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/default-values/deportes", parameters={}
+2024-05-17T17:45:00.921+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.university.extracurricular.DefaultValuesController#getDeportes()
+2024-05-17T17:45:00.946+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-17T17:45:00.947+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [[com.university.extracurricular.Deporte@3ea63f72, com.university.extracurricular.Deporte@6f0bfddc, c (truncated)...]
+2024-05-17T17:45:00.977+02:00  WARN 6544 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)
+2024-05-17T17:45:00.977+02:00  WARN 6544 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)]
+2024-05-17T17:45:00.978+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-17T17:45:14.580+02:00 DEBUG 6544 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/default-values/deportes", parameters={}
+2024-05-17T17:45:14.581+02:00 DEBUG 6544 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.university.extracurricular.DefaultValuesController#getDeportes()
+2024-05-17T17:45:14.597+02:00 DEBUG 6544 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-17T17:45:14.598+02:00 DEBUG 6544 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [[com.university.extracurricular.Deporte@24f37cf7, com.university.extracurricular.Deporte@c638ee8, co (truncated)...]
+2024-05-17T17:45:14.615+02:00  WARN 6544 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)
+2024-05-17T17:45:14.616+02:00  WARN 6544 --- [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)]
+2024-05-17T17:45:14.616+02:00 DEBUG 6544 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-17T17:45:23.924+02:00 DEBUG 6544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/default-values/deportes", parameters={}
+2024-05-17T17:45:23.926+02:00 DEBUG 6544 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.university.extracurricular.DefaultValuesController#getDeportes()
+2024-05-17T17:45:23.945+02:00 DEBUG 6544 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-17T17:45:23.946+02:00 DEBUG 6544 --- [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing [[com.university.extracurricular.Deporte@113b5b3c, com.university.extracurricular.Deporte@5945e90a, c (truncated)...]
+2024-05-17T17:45:23.965+02:00  WARN 6544 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)
+2024-05-17T17:45:23.966+02:00  WARN 6544 --- [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)]
+2024-05-17T17:45:23.967+02:00 DEBUG 6544 --- [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-17T17:47:04.184+02:00 DEBUG 6544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/deportes", parameters={}
+2024-05-17T17:47:04.258+02:00 DEBUG 6544 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.university.extracurricular.DeporteController#getAllDeportes()
+2024-05-17T17:47:05.079+02:00 DEBUG 6544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-17T17:47:05.086+02:00 DEBUG 6544 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.university.extracurricular.Deporte@55148436, com.university.extracurricular.Deporte@3c855e2, co (truncated)...]
+2024-05-17T17:47:05.229+02:00  WARN 6544 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)
+2024-05-17T17:47:05.229+02:00  WARN 6544 --- [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)]
+2024-05-17T17:47:05.234+02:00 DEBUG 6544 --- [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-05-17T18:05:44.157+02:00  INFO 6544 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-05-17T18:05:44.539+02:00  INFO 6544 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-17T18:05:44.571+02:00  INFO 6544 --- [Thread-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2024-05-17T18:05:44.763+02:00  INFO 6544 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-17T18:05:45.050+02:00  INFO 6544 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-17T18:05:45.206+02:00  INFO 6544 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-17T18:05:45.958+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : Starting ExtracurricularClassesRegistrationApplication using Java 19.0.1 with PID 6544 (C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes\target\classes started by Ruben in C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes)
+2024-05-17T18:05:45.959+02:00 DEBUG 6544 --- [restartedMain] curricularClassesRegistrationApplication : Running with Spring Boot v3.1.11, Spring v6.0.19
+2024-05-17T18:05:45.959+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : No active profile set, falling back to 1 default profile: "default"
+2024-05-17T18:05:46.524+02:00  INFO 6544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-17T18:05:46.554+02:00  INFO 6544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 2 JPA repository interfaces.
+2024-05-17T18:05:46.808+02:00  INFO 6544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-05-17T18:05:46.812+02:00  INFO 6544 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-17T18:05:46.813+02:00  INFO 6544 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-17T18:05:46.847+02:00  INFO 6544 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-17T18:05:46.847+02:00  INFO 6544 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 881 ms
+2024-05-17T18:05:46.921+02:00  INFO 6544 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-17T18:05:46.934+02:00  INFO 6544 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-17T18:05:46.936+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-05-17T18:05:47.103+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4760c279
+2024-05-17T18:05:47.103+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-05-17T18:05:47.337+02:00  INFO 6544 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-17T18:05:47.490+02:00  INFO 6544 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-17T18:05:47.614+02:00  WARN 6544 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-17T18:05:47.675+02:00 DEBUG 6544 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-17T18:05:47.714+02:00 DEBUG 6544 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 9 mappings in 'requestMappingHandlerMapping'
+2024-05-17T18:05:48.202+02:00 DEBUG 6544 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-05-17T18:05:48.207+02:00 DEBUG 6544 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-17T18:05:48.269+02:00  INFO 6544 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-17T18:05:48.285+02:00  INFO 6544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-05-17T18:05:48.291+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : Started ExtracurricularClassesRegistrationApplication in 2.49 seconds (process running for 1318.603)
+2024-05-17T18:05:48.295+02:00  INFO 6544 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-05-17T18:05:49.698+02:00  INFO 6544 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-05-17T18:05:49.708+02:00  INFO 6544 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-05-17T18:05:49.712+02:00  INFO 6544 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-17T18:05:49.713+02:00  INFO 6544 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-05-17T18:05:49.720+02:00  INFO 6544 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-05-17T18:05:49.793+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : Starting ExtracurricularClassesRegistrationApplication using Java 19.0.1 with PID 6544 (C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes\target\classes started by Ruben in C:\Users\Ruben\Documents\DAM\PracticaFinal\dam_proyecto_android_ada_psp-RubenGarEEP\extracurricular-classes)
+2024-05-17T18:05:49.793+02:00 DEBUG 6544 --- [restartedMain] curricularClassesRegistrationApplication : Running with Spring Boot v3.1.11, Spring v6.0.19
+2024-05-17T18:05:49.793+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : No active profile set, falling back to 1 default profile: "default"
+2024-05-17T18:05:49.983+02:00  INFO 6544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-17T18:05:49.999+02:00  INFO 6544 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2024-05-17T18:05:50.089+02:00  INFO 6544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-05-17T18:05:50.090+02:00  INFO 6544 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-17T18:05:50.091+02:00  INFO 6544 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-17T18:05:50.112+02:00  INFO 6544 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-17T18:05:50.112+02:00  INFO 6544 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 315 ms
+2024-05-17T18:05:50.145+02:00  INFO 6544 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-17T18:05:50.152+02:00  INFO 6544 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-17T18:05:50.154+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-05-17T18:05:50.172+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@465df6c4
+2024-05-17T18:05:50.172+02:00  INFO 6544 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-05-17T18:05:50.238+02:00  INFO 6544 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-17T18:05:50.278+02:00  INFO 6544 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-17T18:05:50.353+02:00  WARN 6544 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-17T18:05:50.385+02:00 DEBUG 6544 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-05-17T18:05:50.400+02:00 DEBUG 6544 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 9 mappings in 'requestMappingHandlerMapping'
+2024-05-17T18:05:50.611+02:00 DEBUG 6544 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-05-17T18:05:50.615+02:00 DEBUG 6544 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-05-17T18:05:50.636+02:00  INFO 6544 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-17T18:05:50.644+02:00  INFO 6544 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-05-17T18:05:50.647+02:00  INFO 6544 --- [restartedMain] curricularClassesRegistrationApplication : Started ExtracurricularClassesRegistrationApplication in 0.88 seconds (process running for 1320.959)
+2024-05-17T18:05:50.649+02:00  INFO 6544 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-05-17T18:05:52.150+02:00  INFO 6544 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-17T18:05:52.150+02:00  INFO 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-17T18:05:52.150+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-05-17T18:05:52.152+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-05-17T18:05:52.152+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-05-17T18:05:52.152+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2c62a840
+2024-05-17T18:05:52.153+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7a5c0d76
+2024-05-17T18:05:52.153+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-05-17T18:05:52.153+02:00  INFO 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-05-17T18:05:52.153+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/deportes", parameters={}
+2024-05-17T18:05:52.155+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.university.extracurricular.DeporteController#getAllDeportes()
+2024-05-17T18:05:52.178+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-05-17T18:05:52.178+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.university.extracurricular.Deporte@423580f4, com.university.extracurricular.Deporte@477447c6, c (truncated)...]
+2024-05-17T18:05:52.209+02:00 DEBUG 6544 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
