@@ -9,63 +9,102 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/registrations")
 public class ExtracurricularClassesRegistrationController {
 
     @Autowired
-    private ExtracurricularClassesRegistrationRepository repository;
+    private ExtracurricularClassesRegistrationRepository registrationRepository;
+
+    @Autowired
+    private DeporteRepository deporteRepository;
 
     @PostMapping
     public ResponseEntity<ExtracurricularClassesRegistration> createRegistration(@RequestBody ExtracurricularClassesRegistration registration) {
-        ExtracurricularClassesRegistration savedRegistration = repository.save(registration);
-        return new ResponseEntity<>(savedRegistration, HttpStatus.CREATED);
+        try {
+            Deporte deporte = registration.getDeporte();
+            Optional<Deporte> existingDeporte = deporteRepository.findByNombre(deporte.getNombre());
+
+            if (existingDeporte.isPresent()) {
+                registration.setDeporte(existingDeporte.get());
+            } else {
+                Deporte savedDeporte = deporteRepository.save(deporte);
+                registration.setDeporte(savedDeporte);
+            }
+
+            ExtracurricularClassesRegistration savedRegistration = registrationRepository.save(registration);
+            return new ResponseEntity<>(savedRegistration, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping
     public ResponseEntity<Void> deleteRegistrationByNameAndDeporte(@RequestParam String nombre, @RequestParam String deporte) {
-        List<ExtracurricularClassesRegistration> registrations = repository.findByNombreAndDeporteNombre(nombre, deporte);
-        if (registrations.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try {
+            List<ExtracurricularClassesRegistration> registrations = registrationRepository.findByNombreAndDeporteNombre(nombre, deporte);
+            if (registrations.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            for (ExtracurricularClassesRegistration registration : registrations) {
+                registrationRepository.delete(registration);
+            }
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        for (ExtracurricularClassesRegistration registration : registrations) {
-            repository.delete(registration);
-        }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping
     public ResponseEntity<List<ExtracurricularClassesRegistration>> getAllRegistrations() {
-        List<ExtracurricularClassesRegistration> registrations = repository.findAll();
-        return new ResponseEntity<>(registrations, HttpStatus.OK);
+        try {
+            List<ExtracurricularClassesRegistration> registrations = registrationRepository.findAll();
+            return new ResponseEntity<>(registrations, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ExtracurricularClassesRegistration> updateRegistration(
             @PathVariable Long id, @RequestBody ExtracurricularClassesRegistration updatedRegistration) {
-        return repository.findById(id)
-                .map(existingRegistration -> {
-                    existingRegistration.setNombre(updatedRegistration.getNombre());
-                    existingRegistration.setEdad(updatedRegistration.getEdad());
-                    existingRegistration.setHorario(updatedRegistration.getHorario());
-                    existingRegistration.setDeporte(updatedRegistration.getDeporte());
-                    ExtracurricularClassesRegistration savedRegistration = repository.save(existingRegistration);
-                    return new ResponseEntity<>(savedRegistration, HttpStatus.OK);
-                })
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        try {
+            return registrationRepository.findById(id)
+                    .map(existingRegistration -> {
+                        existingRegistration.setNombre(updatedRegistration.getNombre());
+                        existingRegistration.setEdad(updatedRegistration.getEdad());
+                        existingRegistration.setHorario(updatedRegistration.getHorario());
+                        existingRegistration.setDeporte(updatedRegistration.getDeporte());
+                        ExtracurricularClassesRegistration savedRegistration = registrationRepository.save(existingRegistration);
+                        return new ResponseEntity<>(savedRegistration, HttpStatus.OK);
+                    })
+                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/search")
     public ResponseEntity<Page<ExtracurricularClassesRegistration>> searchRegistrations(
-            @RequestParam(required = false) String nombre,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "nombre") String sortBy,
-            @RequestParam(defaultValue = "asc") String sortDir
+        @RequestParam(required = false) String nombre,
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size,
+        @RequestParam(defaultValue = "nombre") String sortBy,
+        @RequestParam(defaultValue = "asc") String sortDir
     ) {
-        PageRequest pageable = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sortBy);
-        Page<ExtracurricularClassesRegistration> registrations = repository.findByNombreContainingIgnoreCase(nombre, pageable);
-        return ResponseEntity.ok(registrations);
+        try {
+            PageRequest pageable = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sortBy);
+            Page<ExtracurricularClassesRegistration> registrations = registrationRepository.findByNombreContainingIgnoreCase(nombre, pageable);
+            return ResponseEntity.ok(registrations);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

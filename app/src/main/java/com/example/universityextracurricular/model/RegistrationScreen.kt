@@ -36,6 +36,8 @@ fun RegistrationScreen(apiService: ApiService) {
                 deporte = Deporte(id = null, nombre = deporteNombre)
             )
 
+            println("DEBUG: Enviando registro: $registro")
+
             apiService.createRegistration(registro)
                 .enqueue(object : Callback<ExtracurricularClassesRegistration> {
                     override fun onResponse(
@@ -45,9 +47,11 @@ fun RegistrationScreen(apiService: ApiService) {
                         if (response.isSuccessful) {
                             successMessage = "Registro exitoso"
                             errorMessage = ""
+                            println("DEBUG: Registro exitoso")
                         } else {
                             successMessage = ""
                             errorMessage = "Error: ${response.code()} - ${response.message()}"
+                            println("DEBUG: Error al registrar: ${response.code()} - ${response.message()}")
                         }
                     }
 
@@ -57,10 +61,12 @@ fun RegistrationScreen(apiService: ApiService) {
                     ) {
                         successMessage = ""
                         errorMessage = "Error: ${t.message}"
+                        println("DEBUG: Error de red: ${t.message}")
                     }
                 })
         } else {
             errorMessage = "Por favor, completa todos los campos"
+            println("DEBUG: Campos incompletos")
         }
     }
 
@@ -72,19 +78,23 @@ fun RegistrationScreen(apiService: ApiService) {
                         if (response.isSuccessful) {
                             successMessage = "Registro borrado"
                             errorMessage = ""
+                            println("DEBUG: Registro borrado")
                         } else {
                             successMessage = ""
                             errorMessage = "Usuario no registrado"
+                            println("DEBUG: Error al borrar registro: ${response.code()} - ${response.message()}")
                         }
                     }
 
                     override fun onFailure(call: Call<Void>, t: Throwable) {
                         successMessage = ""
                         errorMessage = "Error: ${t.message}"
+                        println("DEBUG: Error de red al borrar: ${t.message}")
                     }
                 })
         } else {
             errorMessage = "Por favor, completa todos los campos"
+            println("DEBUG: Campos incompletos al borrar")
         }
     }
 

@@ -1,17 +1,10 @@
 package com.university.extracurricular;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
-@Table(name = "deportes")  // Asegúrate de que este nombre coincide con el de la tabla en la base de datos
+@Table(name = "deportes")
 public class Deporte {
 
     @Id
@@ -19,8 +12,7 @@ public class Deporte {
     private Long id;
     private String nombre;
 
-    @OneToMany(mappedBy = "deporte")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "deporte", cascade = CascadeType.ALL)
     private List<ExtracurricularClassesRegistration> registrations;
 
     // Constructor por defecto

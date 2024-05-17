@@ -1,13 +1,6 @@
 package com.university.extracurricular;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "registros")
@@ -18,11 +11,10 @@ public class ExtracurricularClassesRegistration {
     private Long id;
     private String nombre;
     private int edad;
-    private String horario; // Añadir el campo horario
+    private String horario;
 
     @ManyToOne
     @JoinColumn(name = "deporte_id", nullable = false)
-    @JsonBackReference
     private Deporte deporte;
 
     // Constructor por defecto
@@ -32,7 +24,7 @@ public class ExtracurricularClassesRegistration {
     public ExtracurricularClassesRegistration(String nombre, int edad, String horario, Deporte deporte) {
         this.nombre = nombre;
         this.edad = edad;
-        this.horario = horario; // Inicializar el campo horario
+        this.horario = horario;
         this.deporte = deporte;
     }
 
@@ -77,3 +69,4 @@ public class ExtracurricularClassesRegistration {
         this.deporte = deporte;
     }
 }
+
