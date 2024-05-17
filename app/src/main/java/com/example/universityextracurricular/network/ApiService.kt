@@ -36,7 +36,6 @@ interface ApiService {
 
     @GET("/api/default-values/deporte")
     fun getDeporteByName(@Query("nombre") nombre: String): Call<Deporte>
-
     companion object {
         private const val BASE_URL = "http://10.0.2.2:8080" // URL del servidor
 
