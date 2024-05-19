@@ -20,7 +20,11 @@ fun SportsScreen(apiService: ApiService) {
     var deportes by remember { mutableStateOf(listOf<Deporte>()) }
     var errorMessage by remember { mutableStateOf("") }
     var searchQuery by remember { mutableStateOf("") }
-    var searchResults by remember { mutableStateOf<List<ExtracurricularClassesRegistration>>(emptyList()) }
+    var searchResults by remember {
+        mutableStateOf<List<ExtracurricularClassesRegistration>>(
+            emptyList()
+        )
+    }
 
     LaunchedEffect(Unit) {
         apiService.getDeportes().enqueue(object : Callback<List<Deporte>> {
@@ -108,7 +112,7 @@ fun SportsScreen(apiService: ApiService) {
             items(searchResults) { result ->
                 if (result.deporte != null) {
                     Text(
-                        text = "Nombre: ${result.nombre}, Edad: ${result.edad}, Deporte: ${result.deporte.nombre}, Horario: ${result.horario}",
+                        text = "Nombre: ${result.nombre}, Edad: ${result.edad}, Deporte ID: ${result.deporte.id}, Horario: ${result.horario}",
                         modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
                     )
                 } else {

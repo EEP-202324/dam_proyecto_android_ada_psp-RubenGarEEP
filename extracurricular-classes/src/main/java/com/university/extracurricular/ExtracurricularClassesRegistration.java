@@ -1,7 +1,6 @@
 package com.university.extracurricular;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -15,12 +14,12 @@ public class ExtracurricularClassesRegistration {
     private int edad;
     private String horario;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "deporte_id", nullable = false)
     @JsonBackReference
     private Deporte deporte;
 
-    // Constructor por defecto
+   
     public ExtracurricularClassesRegistration() {}
 
     // Constructor con parámetros

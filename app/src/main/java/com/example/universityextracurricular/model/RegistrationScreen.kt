@@ -72,31 +72,27 @@ fun RegistrationScreen(apiService: ApiService) {
 
     fun deleteAlumno() {
         if (nombre.isNotEmpty() && deporteNombre.isNotEmpty()) {
-            apiService.deleteRegistrationByNameAndDeporte(nombre, deporteNombre)
-                .enqueue(object : Callback<Void> {
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        if (response.isSuccessful) {
-                            successMessage = "Registro borrado"
-                            errorMessage = ""
-                            println("DEBUG: Registro borrado")
-                        } else {
-                            successMessage = ""
-                            errorMessage = "Usuario no registrado"
-                            println("DEBUG: Error al borrar registro: ${response.code()} - ${response.message()}")
-                        }
-                    }
-
-                    override fun onFailure(call: Call<Void>, t: Throwable) {
+            apiService.deleteRegistrationByNameAndDeporte(nombre, deporteNombre).enqueue(object : Callback<Void> {
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful) {
+                        successMessage = "Registro borrado"
+                        errorMessage = ""
+                    } else {
                         successMessage = ""
-                        errorMessage = "Error: ${t.message}"
-                        println("DEBUG: Error de red al borrar: ${t.message}")
+                        errorMessage = "Usuario no registrado"
                     }
-                })
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    successMessage = ""
+                    errorMessage = "Error: ${t.message}"
+                }
+            })
         } else {
             errorMessage = "Por favor, completa todos los campos"
-            println("DEBUG: Campos incompletos al borrar")
         }
     }
+
 
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
