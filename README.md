@@ -1,5 +1,11 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/AE4M6CtT)
 
+ENLACE VIDEO:
+
+https://eepmad-my.sharepoint.com/:v:/g/personal/ruben-garcia1_eep-igroup_com/EWrlT_ooqcRJjFANkBdqMRwBKKDXYHhAaroi-FvM5PXQrQ?e=ejedzw&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+
+
 
 Este proyecto es una aplicación para gestionar las inscripciones de estudiantes en actividades universitarias, específicamente en deportes. La aplicación permite registrarse en diversas actividades deportivas, buscar registros existentes y eliminarlos si es necesario.
 
